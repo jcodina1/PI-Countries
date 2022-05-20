@@ -5,7 +5,7 @@
 # Individual Project - Henry Countries
 
 <p align="left">
-  <img height="200" src="./countries.png" />
+  <img height="200" src="./countries.png" />  
 </p>
 
 ## Objetivos del Proyecto
