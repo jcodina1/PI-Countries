@@ -17,8 +17,25 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     continent:{
-      
+      type:DataTypes.STRING,
       allowNull:false
-    }
+    },
+    capital:{
+      type:DataTypes.STRING,
+      allowNull:false
+    },
+    subRegion:{
+      type:DataTypes.STRING,
+      
+    },
+    area:{
+      type:DataTypes.STRING,
+      
+    },
+    poblacion:{
+      type:DataTypes.STRING,
+      
+    },
+    
   });
 };
