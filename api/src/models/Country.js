@@ -6,8 +6,12 @@ module.exports = (sequelize) => {
   sequelize.define('country', {
     id:{
       type:DataTypes.STRING(3),
+<<<<<<< HEAD
       allowNull:false,
       primaryKey: true
+=======
+      allowNull:false
+>>>>>>> 338b71fe3ae3358f110117a9ebd655086cf442ae
     },
     name: {
       type: DataTypes.STRING,
@@ -33,7 +37,11 @@ module.exports = (sequelize) => {
       type:DataTypes.STRING,
       
     },
+<<<<<<< HEAD
     population:{
+=======
+    poblacion:{
+>>>>>>> 338b71fe3ae3358f110117a9ebd655086cf442ae
       type:DataTypes.STRING,
       
     }
