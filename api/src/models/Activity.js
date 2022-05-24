@@ -5,12 +5,9 @@ module.exports = (sequelize) => {
   // defino el modelo
     sequelize.define('activity', {
         id:{
-            type:DataTypes.INTEGER,
-<<<<<<< HEAD
+            type:DataTypes.UUID,
             primaryKey: true
-=======
-            primarykey: true
->>>>>>> 338b71fe3ae3358f110117a9ebd655086cf442ae
+
         },
         name:{
             type: DataTypes.STRING

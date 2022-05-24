@@ -1,7 +1,8 @@
 const { Router } = require('express');
-const { getAllCountries,postAllCountries } = require('../Controllers/countryController');
+const { getAllCountries,  getCountryById, getByQuery } = require('../Controllers/countryController');
+
 
 const router = Router();
-router.get('/',getAllCountries)
-router.post('/',postAllCountries)
+router.get('/', getAllCountries)
+router.get('/:idPais', getCountryById)
 module.exports=router
