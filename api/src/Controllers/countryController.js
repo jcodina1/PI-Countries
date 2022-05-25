@@ -50,7 +50,7 @@ async function getAllCountries(req,res,next){
         const pais= await Country.findAll({
             where:{name:{[Op.iLike]:`%${name}%`}}
         })
-        console.log(pais);
+        
         if (!pais[0]) res.status(404).send(`El Pais ${name} No Se encuentra`)
         else res.send(pais)
         } 
@@ -63,7 +63,7 @@ async function getCountryById(req,res,next){
     const{idPais}=req.params
     try {
       const pais=await  Country.findOne({
-        where: {id:idPais},
+        where: {id:{[Op.iLike]:`%${idPais}`}},
         include: Activity
     })
     res.send(pais)
