@@ -3,8 +3,8 @@ import './CountryId.css'
 
 export default function CountryCardId(props){
     const{name, continent,id,capital,subRegion,area,population,activities}=props
-console.log(activities);
 
+console.log(activities.map(e=>e));
 
 
   
@@ -30,7 +30,7 @@ return(
             <div className="name-id">Poblacion:</div>
             <p>{population}</p>
             <div className="name-id">Actividades:</div>
-            <p>{}</p>
+            {activities.map(e=> <li key={e.id}>{e.name}</li>)}
         
       
     </div>

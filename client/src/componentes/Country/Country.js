@@ -14,7 +14,7 @@ export default function Country(){
         dispatch(getCountryById(idPais))
     },[idPais,dispatch])
     const country= useSelector(state=>state.country)
-    
+    //console.log(country.activities.map(e=>e.name));
     if(country&&country.activities){
         return(
             <>
