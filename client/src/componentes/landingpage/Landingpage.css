@@ -5,11 +5,15 @@ box-sizing: border-box;
 }
 body{
     font-family:'Releway', sans-serif;
-    background:linear-gradient(90deg, #799F0C 0%, #ACBB78 100%);
+   
     min-height: 100vh;
 }
 
 .contenedor{
+    font-family:'Releway', sans-serif;
+    background:linear-gradient(90deg, #799F0C 0%, #ACBB78 100%);
+    width: 100%;
+    min-height: 100vh;
     position: relative;   
     height: 600px;
     display: flex;

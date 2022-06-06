@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Landingpage from '../componentes/landingpage/Landingpage';
 import Home from '../componentes/Home/Home.js';
 import Activity from '../componentes/Activity/Activity';
@@ -13,7 +13,7 @@ return (
         
         <Route path="/" element={<Landingpage />} />
         <Route path='/home' element={<Home />}/>
-        <Route path='/country' element={<Country />}/>
+        <Route path='/country/:idPais' element={<Country />}/>
         <Route path='/activity' element={<Activity />}/>
         
 

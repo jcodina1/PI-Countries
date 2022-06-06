@@ -1,0 +1,17 @@
+
+  .name-id {
+    font-size: 15px;
+    font-weight: 600;  
+    margin-top: 2px;
+  }
+  
+  /* Style p element */
+  p {
+    font-size: 14px;
+    color: #7f8c9b;
+    line-height: 150%;
+  }
+  .card__details {
+    
+    padding: 5px 8px 8px 8px;
+}

@@ -1,0 +1,28 @@
+.container-search {
+ 
+  padding: 0.5rem;
+  margin: 0.5rem ;   
+  text-align: center;
+  width: 24%;
+  
+  }
+.input-searchBar{
+    
+ 
+  font-size: 17px;
+  
+  padding: 0.2rem 0.5rem;
+  border: bottom 1px;
+  
+}
+.btn-searchbar{
+   
+    padding: 0.2rem 0.5rem;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: white;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
