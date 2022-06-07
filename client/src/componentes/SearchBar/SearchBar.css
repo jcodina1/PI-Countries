@@ -11,16 +11,19 @@
  
   font-size: 17px;
   
-  padding: 0.2rem 0.5rem;
-  border: bottom 1px;
+  padding: 0.2rem 0.5rem; 
+  border: none;
+  outline: 10px;;
+  background: none;
   
 }
+
 .btn-searchbar{
    
     padding: 0.2rem 0.5rem;
   margin-top: 8px;
   margin-right: 16px;
-  background: white;
+ background: none ;
   font-size: 17px;
   border: none;
   cursor: pointer;

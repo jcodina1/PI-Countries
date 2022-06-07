@@ -1,110 +1,18 @@
-.contenedorAF{
+.global-activity{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.formulario-actv{
+    display: flex;
+  width: 50%;
+
+  padding: 8px;
 }
 
-.containerA {
-    display: flex;
-   
-    justify-content: space-around;
-    align-items: center;
-   
-    margin-top: 10px;
-  }
-  
-  
-  
-  .cardA {
-    margin: 10px 20px 5px 20px;
-    width: 18rem;
-    background-color: #b6b6b67a;
-    border-style: none;  
-    color:rgb(53, 48, 48);
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px 3px #999;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-  }
-  
-  
-  
-  .card__bodyA {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-   
-  }
-  .p{
-   
-  }
-  .cardb {
-    display: flex;
-    flex-direction: column;
-   
-    overflow: hidden;
-    background-color: #ffffff;
-    border-style: none;  
-    color:rgb(53, 48, 48);
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px 3px #999;
-  }
-  
-  
-  
-  .card__bodyb {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-  }
-  .form{
-      display: flex;
-      flex-direction: column;
-    }
-  .label{
-      align-self: flex-start;
-      margin: 5px;
-      }
-  .input {
-      border-radius: 10px;
-      border-style: none;
-      padding: 10px;
-      background-color: #c9c9c9a9;
-  }
-  
-  .submit{
-      align-self: center;
-      width: 30%;
-      margin: 10px;
-      padding: 10px;
-      border-radius: 1em;
-      border-style: none;
-      color: white;
-      background: linear-gradient(to bottom, #2F80ED, #56CCF2);
-  }
-  .tag-blue1 {
-    align-self: center ;
-    padding: .25em .75em;
-    border-radius: 1em;
-    font-size: 15px;
-    
-    
-  }
-  
-.tag-blue1{
-  background: #56CCF2;
-  background: linear-gradient(to bottom, #2F80ED, #56CCF2);
-  color: #fafafa;
-   
-  }
-  
-  .danger{
-    color:red
-  }
-
-  .select{
-      display: flex;
-      flex-direction:row ;
-  }
+.contenedor-activities{
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  width: 50%;
+}

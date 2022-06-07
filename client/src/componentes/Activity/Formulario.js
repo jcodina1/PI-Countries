@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postActivities } from '../../redux/Actions/actionsActivity';
 import { getCountries } from '../../redux/Actions/actionsCountry';
-import './Activity.css'
+import './Formulario.css'
 
-export default function Formulario(){
+export default function Formulario(props){
     const dispatch=useDispatch()
     const pais=useSelector(state=>state.countries)
-    const actividad=useSelector(state=>state.activity)
-    console.log(actividad);
-  const [errors, setErrors] = React.useState({});
-  const [input,setInput]=React.useState({
-    tipo:'',
-    name:'',
-    dificultad:0,
-    duracion:0,
-    temporada:'',
-    
-  })
+    const [errors, setErrors] = React.useState({});
+    const [input,setInput]=React.useState({
+      tipo:'',
+      name:'',
+      dificultad:'',
+      duracion:'',
+      temporada:'',
+      
+    })
+const temporadas=['Verano', 'Otoño', 'Invierno', 'Primavera']
 const [countries,setCountries]=useState([])
 const continentes=['africa','europe','south America','north America','asia','Antarctica']
 const handeChangeContinent=(e)=>{
@@ -44,117 +43,139 @@ const handeChangeCountries=(e)=>{
         dispatch(postActivities(input.tipo,input.name,input.dificultad,input.duracion,input.temporada,countries))
         window.location.reload()
     }
-console.log(input,countries);
 
-//console.log(errors)
 
     return(
     
-      <div className="cardb">
-          <div className="card__headerb">
-            <h3>Agragar Actividad</h3>            
-          </div>
-        <div className="card__bodyb">
+      <div className="container-form">
+  <h1 className='titulo'>&bull; Agregar Actividad&bull;</h1>
+  <div className="underline">
+  </div>
+        
         <form className='form' onSubmit={(e)=>handleOnSubmit(e)}>
             {/* TIPO */}
+          <div className="input-left">
           {errors && errors.tipo && (<p className="danger">{errors.tipo}</p>)}
-          <label className="label">Tipo de Actividad:</label><br/>
+      
           <input
-          className='input'
+          className='input-form'
           type='text'
           name="tipo"
           placeholder="Tipo de actividad"
           value={input.tipo}
           onChange={(e)=>handleInputChange(e)}
-          /><br/>
+          />      
+    </div>
 
           {/* NAME */}
-          <label className="label">Nombre de la Actividad:</label><br/>
-          {errors && errors.name && (<p className="danger">{errors.name}</p>
-          )}
+         
+           <div className="input-right">
+          {errors && errors.name && (<p className="danger">{errors.name}</p>)}
           <input
-          className='input'
+          className='input-form'
           type='text'
           name="name"
           placeholder="Nombre de la actividad"
           value={input.name}
           onChange={(e)=>handleInputChange(e)}
-          /> <br/>
+          /></div> 
 
-          {/* DIFICULTAD */}          
-          <label className="label">Dificultad:</label><br/>
+          {/* DIFICULTAD */}         
+          
+          <div className="input-left">
           {errors && errors.dificultad && (<p className="danger">{errors.dificultad}</p>)}
           <input
-          className='input'
-          type='range'
-          min='1'
-          max='5'
+          className='input-form'
+          type='number'
+          
           name="dificultad"
           placeholder="Dificultad"
           value={input.dificultad}
           onChange={(e)=>handleInputChange(e)}
-          /><br/>
+          />
+          </div>
           
           {/* DURACION */}
-          <label className="label">Duracion:</label><br/>
+          <div className="input-right">          
           {errors && errors.duracion && (<p className="danger">{errors.duracion}</p>)}
           <input
-          className='input'
-          type='text'
-         
+          className='input-form'
+          type='text'          
           name="duracion"
-          placeholder="Dificultad"
+          placeholder="Duracion"
           value={input.duracion}
           onChange={(e)=>handleInputChange(e)}
           /><br/>
+          </div>
 
-          {/* temporada */}
-          <label className="label">Teporada:</label><br/>
-          {errors && errors.temporada && (<p className="danger">{errors.temporada}</p>)}
-          <input
-          className='input'
-          type='text'
-          name="temporada"
-          placeholder="temporada"
-          value={input.temporada}
-          onChange={(e)=>handleInputChange(e)}
-          /><br/>
+          {/* temporada */}          
+        <div className='temporada'>
+        {errors && errors.temporada && (<strong className="danger">!Cuidado¡ {errors.temporada}</strong>)}
+        <select
+                className='input-form'
+                name='temporada' 
+                onChange={(e)=>handleInputChange(e)}
+                defaultValue=''
+                >
+                <option value='' >Select an option</option>
+               {temporadas.map(e=> <option key={e} value={e}>{e}</option>)}
+                </select>
+          
+        </div>
 
-  <div className='select'>
+ {!props.pais?<>
+  <div className="input-left">
   <select
-                className='select'
+                className='input-form'
                 name='continente ' 
                 onChange={(e)=>handeChangeContinent(e)}
                 defaultValue=''
                 >
-                <option value='' >Selecciona un contient</option>
+                <option value='' >Selecciona un continente</option>
                 {continentes.map(e=><option key={e} value={e}>{e}</option>)}
                 
                 
                 </select>
+                </div>
+                <div className="input-right">
           <select
-                className='select'
+                className='input-form'
                 name='countries' 
                 onChange={(e)=>handeChangeCountries(e)}
                 defaultValue=''
                 >
                 <option value='' >Select an option</option>
                     {pais.map(e => <option key={e.id} value={e.id}  >{e.name}</option>)}
+                </select></div>
+                {countries.map(e=><li key={e}>{e}</li>)}
+ </>
+                :<div className='selects'>
+                  <select
+                className='input-form'
+                name='countries' 
+                onChange={(e)=>handeChangeCountries(e)}
+                defaultValue=''
+                >
+                <option value='' >Select an option</option>
+                <option  value={props.id}>{props.pais}</option>
                 </select>
-  </div>
-               {countries.map(e=><li key={e}>{e}</li>)}
+                  {countries.map(e=><li key={e}>{e}</li>)}
+                </div>}
                 
           
-          <input className="submit" name="submit" type="submit" value="Enviar" disabled={Object.keys(errors).length===0?false:true}/>
-        </form>   
-    </div>
+          <input className="form_button" name="submit" type="submit" value="Enviar" disabled={Object.keys(errors).length===0?false:true}/>
+        </form>  
+        
+        
+        
+    
     </div>
     
     )}
     export function validate(input) {
       let errors = {};
       if (!input.tipo) {
-        errors.tipo = 'Debeespicificar el tipo de actividad';
+        errors.tipo = 'Debe espicificar el tipo de actividad';
       }
       if (!input.name) {
         errors.name = 'Debe escribir el nombre ';
@@ -176,3 +197,4 @@ console.log(input,countries);
     
       return errors;
     };
+    

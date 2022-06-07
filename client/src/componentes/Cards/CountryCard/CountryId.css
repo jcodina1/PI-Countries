@@ -1,17 +1,67 @@
 
+.global-id{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.bandera{
+  border-radius: 12px;
+  object-fit: cover;
+  width: 100%;
+}
+  .contenedor-id{   
+  align-items: center;
+  margin: 30px;
+
+  
+  
+  
+ 
+  }
+  .card-id{
+    background-color: #ffffff71;
+max-width: 300px;
+    /* Add border */
+    border: 1px solid #bacdd8;
+  
+    /* Add space between the border and the content */
+    padding: 8px;
+  
+    border-radius: 12px;
+  }
   .name-id {
     font-size: 15px;
-    font-weight: 600;  
-    margin-top: 2px;
+  font-weight: 600;
+  margin-top: 5px;
   }
-  
-  /* Style p element */
-  li {
+  .p-id{
     font-size: 14px;
-    color: #7f8c9b;
-    line-height: 150%;
+  color: #7f8c9b;
+  line-height: 150%;
   }
-  .card__details {
+  /* Style p element */
+
+  .card__details-id {
     
     padding: 5px 8px 8px 8px;
+}
+.more-id {
+  text-decoration: none;
+  
+  font-weight: 600;
+  color: #023f00;
+  
+  margin: 0 auto;
+  display: block;
+  
+
+  
+  cursor: pointer;
+}
+.formulario-id{
+  display: flex;
+  width: 50%;
+
+  padding: 8px;
 }

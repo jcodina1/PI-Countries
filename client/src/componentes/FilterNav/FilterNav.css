@@ -14,24 +14,21 @@
 }
 .order{
     margin: 3px;
-    color: #7f8c9b;
+    color: #474544;
     
     cursor: pointer;
 }
-.reset{
-   color: #7f8c9b;
-   
-   cursor: pointer;
-}
 
-select {
+
+.select {
   background: transparent;
   border: none;
   font-size: 14px;
   height: 30px;
   padding: 5px;
   width: 250px;
+  color: #474544;
   
   cursor: pointer;
 }
-select:focus{ outline: none;}
+.select:focus{ outline: none;}

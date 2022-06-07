@@ -34,7 +34,7 @@ const onSubmit=(e) => {
     <form onSubmit={onSubmit} >
       <input
         type="text"
-        placeholder="Pais..."      
+        placeholder="Busca un pais..."      
         className='input-searchBar'
         value={Country}
         onChange={(e)=>handleInputChange(e)}

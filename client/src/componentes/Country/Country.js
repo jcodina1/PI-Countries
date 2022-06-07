@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCountryById } from "../../redux/Actions/actionsCountry";
 
-import ActivitiyCard from "../Cards/activityCard/activityCard";
-import'./Country.css'
+
 import { Navbar } from "../Navbar/NavBar";
 import CountryCardId from "../Cards/CountryCard/Countryid";
 export default function Country(){
@@ -14,19 +13,18 @@ export default function Country(){
         dispatch(getCountryById(idPais))
     },[idPais,dispatch])
     const country= useSelector(state=>state.country)
-    //console.log(country.activities.map(e=>e.name));
+    
     if(country&&country.activities){
         return(
             <>
             <Navbar/>
-            <div className="cards-id">
-                <div className='img-id'>
-                <img src={country.img} className='bandera' alt="muestra" />     
-                </div>
+            
+                
                    <CountryCardId                
                         key={country.id}
                         id={country.id}
-                        name={country.name}                
+                        name={country.name}  
+                        img={country.img}              
                         continent={country.continent}
                         subRegion={country.subRegion}
                         capital={country.capital}
@@ -36,7 +34,7 @@ export default function Country(){
                     />
                   
                 
-            </div></>
+            </>
         )
     }else{
         return'vuelva a cargar la pagina'

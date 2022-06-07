@@ -1,4 +1,4 @@
-import { GET_ALL_ACTIVITIES, POST_ACTIVITY, GEL_ACTIVITY_BY_TIPO } from "../Actions/actionsActivity";
+import { GET_ALL_ACTIVITIES, POST_ACTIVITY, GET_ACTIVITY_BY_TIPO, POST_COUNTRY_ACTIVITY } from "../Actions/actionsActivity";
 import {  GET_ALL_COUNTRIES,
      GET_ALL_COUNTRIES_BY_CONTINENT,
       GET_COUNTRY_BY_ID,
@@ -82,13 +82,18 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             activity:action.payload
         }
-    case GEL_ACTIVITY_BY_TIPO:
+    case GET_ACTIVITY_BY_TIPO:
             return{
             ...state,
             countries:action.payload,
             filtro:'Actividades',
             
             
+        }
+        case POST_COUNTRY_ACTIVITY:
+            return{
+            ...state,
+            activity:{},  
         }
     default: return {...state}
 

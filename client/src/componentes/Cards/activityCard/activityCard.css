@@ -1,0 +1,30 @@
+.contenedor-activity{
+background-color: #ffffff71;
+max-width: 300px;   
+border: 1px solid #bacdd8;  
+padding: 8px;
+  
+    
+}
+.titulo-actividad{
+    color: #474544;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.name-actv{
+    font-size: 15px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+.p-actv{
+    font-size: 14px;
+  color: #2d353f;
+  line-height: 150%;
+}
+.card_detail-actv {
+    
+    padding: 5px 8px 8px 8px;
+}

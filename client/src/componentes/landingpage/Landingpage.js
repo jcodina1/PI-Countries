@@ -1,12 +1,24 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {Link} from 'react-router-dom'
 import './Landingpage.css';
 import landingpage1 from './assets/landingpage1.svg';
 import landingpage2 from './assets/landingpage2.png';
+import { getCountries } from '../../redux/Actions/actionsCountry';
+import { getAllActivities } from '../../redux/Actions/actionsActivity';
+import { useDispatch } from 'react-redux';
 
 function Landingpage() {
+  const dispatch=useDispatch()
+    
+  useEffect(()=>{
+  
+      dispatch(getCountries(0,9))
+      dispatch(getAllActivities())
+  
+  
+  },[dispatch])
   return (
     
       <div className='contenedor'>

@@ -62,8 +62,21 @@ async function getActivityByTipo(req,res,next){
     }
 }
 
+async function postCountryActivity(req,res,next){
+    const{countryId,activityId}=req.body
+    try {
+        let pais=await Country.findAll({where:{id:{[Op.iLike]:`%${countryId}%`}}})
+        const actividad= await Activity.findByPk(activityId)
+        const resultado=await actividad.addCountry(pais)
+        res.send('se añadio el pais')
+    } catch (error) {
+        next(error)
+    }
+}
+
 module.exports={
     getActivity,
     postActivity,
-    getActivityByTipo
+    getActivityByTipo,
+    postCountryActivity
 }

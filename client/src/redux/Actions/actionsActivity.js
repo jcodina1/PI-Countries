@@ -1,7 +1,8 @@
 import axios from 'axios'
 export const GET_ALL_ACTIVITIES='GET_ALL_ACTIVITIES'
 export const POST_ACTIVITY='POST_ALL_ACTIVITIES'
-export const GEL_ACTIVITY_BY_TIPO='GEL_ACTIVITY_BY_TIPO'
+export const GET_ACTIVITY_BY_TIPO='GET_ACTIVITY_BY_TIPO'
+export const POST_COUNTRY_ACTIVITY='POST_COUNTRY_ACTIVITY'
 
 
 export const getAllActivities=()=>{
@@ -36,8 +37,22 @@ export const getActivityByTipo=(name)=>{
     return async function (dispatch){
         return axios.get(`http://localhost:3001/activity/${name}`)
         .then(data=>{
-            dispatch({type: GEL_ACTIVITY_BY_TIPO,
+            dispatch({type: GET_ACTIVITY_BY_TIPO,
             payload:data.data})
+        })
+    }
+}
+
+export const postCountryActivity=(countryId,activityId)=>{
+    return async function (dispatch){
+        return axios.post('http://localhost:3001/activity/AC',{
+          countryId:countryId,
+          activityId:activityId
+            })
+        .then(data=>{
+            dispatch({type: POST_COUNTRY_ACTIVITY,
+            payload:data.data
+            })
         })
     }
 }

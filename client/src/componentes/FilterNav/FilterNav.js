@@ -32,6 +32,12 @@ const activity=(e)=>{
     
     dispatch(getActivityByTipo(e.target.value))
 }
+
+const data=actividades.map(e=>e.tipo)
+let result = data.filter((item,index)=>{
+    return data.indexOf(item) === index;
+  })
+
     return (
         <div className="filter-nav">
     <div className='filtros-ordenar'>
@@ -44,7 +50,7 @@ const activity=(e)=>{
     <div className="selectores">
    
     <select
-                className='sidebar-box'
+                className='select'
                 name='continente ' 
                 onChange={(e)=>handeChangeContinent(e)}
                 defaultValue=''
@@ -58,13 +64,14 @@ const activity=(e)=>{
     <div>
 
       <select
-                className='input'
+                className='select'
                 name='actividad' 
                 onChange={(e)=>activity(e)}
                 defaultValue=''
                 >
                 <option value='' >Selecciona tipo de actividad</option>
-                {actividades.map(e=><option key={e.id} value={e.tipo}>{e.tipo}</option>)}
+                {result.map(e=><option key={e} value={e}>{e}</option>)}
+                
                 
                 
                 </select>
