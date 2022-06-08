@@ -65,3 +65,7 @@ max-width: 300px;
 
   padding: 8px;
 }
+.cerrar-id{
+  font-size: 30px;
+  cursor: pointer;
+}

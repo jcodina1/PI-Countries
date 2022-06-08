@@ -15,7 +15,8 @@ const initialState = {
   filtro:'no se ha selecionado',
   valorFiltro:'no se ha selecionado',
   activities:[],
-  activity:{}
+  activity:{},
+  mensaje:{}
        
 };
 
@@ -28,8 +29,8 @@ const rootReducer = (state = initialState, action) => {
             countries:action.payload.Countries,
             paginasTotales:Math.ceil(action.payload.totalItems/10)-1,
             paginaActual:action.payload.currentPage,
-            filtro:'no se ha selecionado',
-            valorFiltro:'no se ha selecionado'
+            filtro:action.payload.filtro,
+            valorFiltro: action.payload.valor
             
         }
     case GET_COUNTRY_BY_ID:
@@ -49,7 +50,7 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             countries:action.payload.Countries,
             paginasTotales:Math.ceil(action.payload.totalItems/10)-1,
-            paginaActual:action.payload.currentPage,
+            paginaActual:state.currentPage,
             filtro:action.payload.filtro,
             valorFiltro: action.payload.valor
         }
@@ -75,18 +76,25 @@ const rootReducer = (state = initialState, action) => {
     case GET_ALL_ACTIVITIES:
             return{
             ...state,
-            activities:action.payload
+            activities:action.payload.Actividades,
+            paginasTotales:Math.ceil(action.payload.totalItems/2)-1,
+            paginaActual:action.payload.currentPage,
+            filtro:action.payload.filtro,
+            valorFiltro: action.payload.valor
         }
     case POST_ACTIVITY:
             return{
             ...state,
-            activity:action.payload
+            mensaje:action.payload
         }
     case GET_ACTIVITY_BY_TIPO:
             return{
             ...state,
-            countries:action.payload,
-            filtro:'Actividades',
+            countries:action.payload.Countries,
+            paginasTotales:Math.ceil(action.payload.totalItems/10)-1,
+            paginaActual:action.payload.currentPage,
+            filtro:action.payload.filtro,
+            valorFiltro: action.payload.valor
             
             
         }

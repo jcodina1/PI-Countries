@@ -1,5 +1,5 @@
 body{
-  background-image: url('./fondo2.jpg');
+  background-image: url('../../assets/fondo2.jpg');
   background-repeat: no-repeat;
 background-attachment: fixed;  
 background-size: cover;
@@ -17,6 +17,11 @@ background-size: cover;
 .botones{
   display: flex;
 }
-
+.load{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
 

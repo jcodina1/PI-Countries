@@ -15,7 +15,7 @@ function Landingpage() {
   useEffect(()=>{
   
       dispatch(getCountries(0,9))
-      dispatch(getAllActivities())
+      dispatch(getAllActivities(0,30))
   
   
   },[dispatch])
@@ -23,7 +23,7 @@ function Landingpage() {
     
       <div className='contenedor'>
         <div className='contenedor-textos'>
-        <h1 className='titulo'>Entra ahora es momento</h1>
+        <h1 className='titulo-landing'>Entra ahora es momento</h1>
         <h2 className='subtitulo'>de aprender sobre el mundo</h2>
         <h3 className='texto'>sus paises y actividades</h3>
         <Link className='btn' to='/home'>Entra aqui</Link>

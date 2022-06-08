@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { postActivities } from '../../redux/Actions/actionsActivity';
+import { getAllActivities, postActivities } from '../../redux/Actions/actionsActivity';
 import { getCountries } from '../../redux/Actions/actionsCountry';
 import './Formulario.css'
 
@@ -22,8 +22,16 @@ const continentes=['africa','europe','south America','north America','asia','Ant
 const handeChangeContinent=(e)=>{
   dispatch(getCountries('continent',e.target.value,0,250))
 }
+const eliminarC=(pais)=>{
+  countries.splice(countries.indexOf(pais),1)
+  setCountries([...countries])
+}
 const handeChangeCountries=(e)=>{
   setCountries([...countries,e.target.value])
+  setErrors(validate({
+    ...countries,...input,
+    [e.target.name]: e.target.value
+  }));
 }
   const handleInputChange=(e)=>{
     
@@ -41,10 +49,10 @@ const handeChangeCountries=(e)=>{
     const handleOnSubmit=(e)=>{
         e.preventDefault() 
         dispatch(postActivities(input.tipo,input.name,input.dificultad,input.duracion,input.temporada,countries))
-        window.location.reload()
+        dispatch(getAllActivities(0,2))
     }
 
-
+console.log(countries);
     return(
     
       <div className="container-form">
@@ -53,9 +61,10 @@ const handeChangeCountries=(e)=>{
   </div>
         
         <form className='form' onSubmit={(e)=>handleOnSubmit(e)}>
+          <div className='input-text'>
             {/* TIPO */}
           <div className="input-left">
-          {errors && errors.tipo && (<p className="danger">{errors.tipo}</p>)}
+          {errors && errors.tipo ? (<p className="danger"> {errors.tipo}</p>):''}
       
           <input
           className='input-form'
@@ -64,26 +73,9 @@ const handeChangeCountries=(e)=>{
           placeholder="Tipo de actividad"
           value={input.tipo}
           onChange={(e)=>handleInputChange(e)}
-          />      
-    </div>
-
-          {/* NAME */}
-         
-           <div className="input-right">
-          {errors && errors.name && (<p className="danger">{errors.name}</p>)}
-          <input
-          className='input-form'
-          type='text'
-          name="name"
-          placeholder="Nombre de la actividad"
-          value={input.name}
-          onChange={(e)=>handleInputChange(e)}
-          /></div> 
-
-          {/* DIFICULTAD */}         
-          
-          <div className="input-left">
-          {errors && errors.dificultad && (<p className="danger">{errors.dificultad}</p>)}
+          /> 
+          {/* DIFICULTAD */}  
+          {errors && errors.dificultad ? (<p className="danger"> {errors.dificultad}</p>):''}
           <input
           className='input-form'
           type='number'
@@ -93,11 +85,24 @@ const handeChangeCountries=(e)=>{
           value={input.dificultad}
           onChange={(e)=>handleInputChange(e)}
           />
-          </div>
-          
+             
+    </div>
+
+          {/* NAME */}
+         
+           <div className="input-right">
+          {errors && errors.name ? (<p className="danger"> {errors.name}</p>):''}
+          <input
+          className='input-form'
+          type='text'
+          name="name"
+          placeholder="Nombre de la actividad"
+          value={input.name}
+          onChange={(e)=>handleInputChange(e)}
+          />
           {/* DURACION */}
-          <div className="input-right">          
-          {errors && errors.duracion && (<p className="danger">{errors.duracion}</p>)}
+                   
+          {errors && errors.duracion ? (<p className="danger"> {errors.duracion}</p>):''}
           <input
           className='input-form'
           type='text'          
@@ -105,12 +110,17 @@ const handeChangeCountries=(e)=>{
           placeholder="Duracion"
           value={input.duracion}
           onChange={(e)=>handleInputChange(e)}
-          /><br/>
-          </div>
+          />
+
+                 
+          
+          
+          
+          </div></div>
 
           {/* temporada */}          
         <div className='temporada'>
-        {errors && errors.temporada && (<strong className="danger">!Cuidado¡ {errors.temporada}</strong>)}
+        {errors && errors.temporada ? (<p className="danger"> {errors.temporada}</p>):''}
         <select
                 className='input-form'
                 name='temporada' 
@@ -123,8 +133,9 @@ const handeChangeCountries=(e)=>{
           
         </div>
 
- {!props.pais?<>
+ {!props.pais?<><div className='selctectylist'>
   <div className="input-left">
+  {errors && errors.countries ? (<p className="danger"> {errors.countries}</p>):''}
   <select
                 className='input-form'
                 name='continente ' 
@@ -144,12 +155,12 @@ const handeChangeCountries=(e)=>{
                 onChange={(e)=>handeChangeCountries(e)}
                 defaultValue=''
                 >
-                <option value='' >Select an option</option>
+                <option value='' >Seleccione un pais</option>
                     {pais.map(e => <option key={e.id} value={e.id}  >{e.name}</option>)}
                 </select></div>
-                {countries.map(e=><li key={e}>{e}</li>)}
- </>
-                :<div className='selects'>
+ </div>
+                <div className='lista'>{countries.map(c=><li className='' key={c}>{c}<p className='' onClick={()=>eliminarC(c)}>⮾</p></li>)}</div></>
+                :<div className='selctectylist'>
                   <select
                 className='input-form'
                 name='countries' 
@@ -159,7 +170,7 @@ const handeChangeCountries=(e)=>{
                 <option value='' >Select an option</option>
                 <option  value={props.id}>{props.pais}</option>
                 </select>
-                  {countries.map(e=><li key={e}>{e}</li>)}
+                <div className='lista'>{countries.map(c=><li className='' key={c}>{c}<p className='cerrar' onClick={()=>eliminarC(c)}>⮾</p></li>)}</div>
                 </div>}
                 
           
@@ -175,7 +186,7 @@ const handeChangeCountries=(e)=>{
     export function validate(input) {
       let errors = {};
       if (!input.tipo) {
-        errors.tipo = 'Debe espicificar el tipo de actividad';
+        errors.tipo = 'Falta el tipo de actividad';
       }
       if (!input.name) {
         errors.name = 'Debe escribir el nombre ';
@@ -192,6 +203,9 @@ const handeChangeCountries=(e)=>{
       }
       if (!input.temporada) {
         errors.temporada = 'Elegir la temporda ';
+      }
+      if (input.countries.length===0) {
+        errors.countries = 'Elegir el pais ';
       } 
      
     

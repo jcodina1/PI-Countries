@@ -1,63 +1,57 @@
-.container-pagination {
-   
-    padding: 0.2rem;
-    margin: 0.5rem ;   
-    text-align: center;
-    width: 24%;
-    justify-content: space-around;
-    align-items: center;
-  }
-  
- .pagination {
+.container-pagination {   
     width: 100%;
-  }
-  
-  
-  
    
-   
-  
-  .pagination, .lista {
-    list-style: none;
-    display: inline;
-    padding-left: 0px;
-  }
+  } 
+ .pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center
+  } 
+
   
  
-  .lista:hover p {
+  .lista:hover  {
     color: #fdfdfd;
     background-color: #1d1f20;
     border: solid 1px #1d1f20;
   }
-  .active p {
+  .active  {
     color: #fdfdfd;
     background-color: #1d1f20;
     border: solid 1px #1d1f20;
-  }
-
-
-
-  .lista:first-child {
-    float: left;
-  }
-  .lista:first-child p:after {
-    content: "Inicio";
-  }
- 
-  .lista:last-child {
-    float: right;
-  }
-  .lista:last-child p:after {
-    content: "Final";
-  }
-  .lista p {
-    border: solid 1px #d7d7d7;
     border-radius: 0.2rem;
-    color: #525252;
+    display: inline-block;
+    text-align: center;
+    padding: 0.2rem 0.5rem;
+    width: 60px;
+    margin: 10px;
+  }
+  .lista-pg  {
+    border: solid 1px #000000;
+    border-radius: 0.2rem;
+    color: #000000;
+    font-weight: 300;
     text-decoration: none;
     text-transform: uppercase;
     display: inline-block;
     text-align: center;
     padding: 0.2rem 0.5rem;
+    width: 36px;   
+    margin: 10px;   
+    
+  }
+  .lista-pg-extremos  {
+    border: solid 1px #000000;
+    border-radius: 0.2rem;
+    color: #000000;
+    font-weight: 300;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    padding: 0.2rem 0.5rem;
+    width: 60px;  
+    margin: 10px;   
+    
   }
  

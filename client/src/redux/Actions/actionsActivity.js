@@ -5,9 +5,9 @@ export const GET_ACTIVITY_BY_TIPO='GET_ACTIVITY_BY_TIPO'
 export const POST_COUNTRY_ACTIVITY='POST_COUNTRY_ACTIVITY'
 
 
-export const getAllActivities=()=>{
+export const getAllActivities=(page,size)=>{
     return async function (dispatch){
-        return axios.get(`http://localhost:3001/activity`)
+        return axios.get(`http://localhost:3001/activity?page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: GET_ALL_ACTIVITIES,
             payload:data.data
@@ -33,9 +33,9 @@ export const postActivities=(tipo,name,difficulty,duration,season,countryId)=>{
         })
     }
 }
-export const getActivityByTipo=(name)=>{
+export const getActivityByTipo=(valor,page,size)=>{
     return async function (dispatch){
-        return axios.get(`http://localhost:3001/activity/${name}`)
+        return axios.get(`http://localhost:3001/activity/${valor}?&page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: GET_ACTIVITY_BY_TIPO,
             payload:data.data})

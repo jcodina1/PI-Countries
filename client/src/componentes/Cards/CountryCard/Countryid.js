@@ -42,7 +42,7 @@ return(
       </div>
    </div>
     </div>
-        {mostrarForm?<div className='formulario-id'><Formulario pais={name} id={id}/></div>:''}
+        {mostrarForm?<div className='formulario-id'><p className='cerrar-id' onClick={()=>setmostrarForm(false)}>⮾</p><Formulario pais={name} id={id}/></div>:''}
   
    </div>
 )

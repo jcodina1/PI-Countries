@@ -30,7 +30,7 @@ const reset=()=>{
 
 const activity=(e)=>{
     
-    dispatch(getActivityByTipo(e.target.value))
+    dispatch(getActivityByTipo(e.target.value,0,9))
 }
 
 const data=actividades.map(e=>e.tipo)

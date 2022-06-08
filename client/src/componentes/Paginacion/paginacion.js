@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries } from "../../redux/Actions/actionsCountry";
 import './paginacion.css'
-
+import {  getAllActivities } from "../../redux/Actions/actionsActivity";
 
 export const Paginacion =()=>{
     
@@ -12,34 +12,39 @@ export const Paginacion =()=>{
     //console.log('FILTRO: '+filtro,'VALORFILTRO: '+valorFiltro);
     
     const next=(filtro,valorFiltro,paginaActual)=>{
-        
-         dispatch(getCountries(filtro,valorFiltro,paginaActual+1,10))
+        if(filtro==='all_activities') dispatch(getAllActivities(paginaActual+1,2))
+        else dispatch(getCountries(filtro,valorFiltro,paginaActual+1,10))
         
     }
     const prevPage=(filtro,valorFiltro,paginaActual)=>{
-         dispatch(getCountries(filtro,valorFiltro,paginaActual-1,10))
+        if(filtro==='all_activities') dispatch(getAllActivities(filtro,valorFiltro,paginaActual-1,2))
+        else dispatch(getCountries(filtro,valorFiltro,paginaActual-1,10))
+         
         
     }
     const firstPage=(filtro,valorFiltro,paginaActual)=>{
-        dispatch(getCountries(filtro,valorFiltro,paginaActual,9))
+        if(filtro==='all_activities') dispatch(getAllActivities(filtro,valorFiltro,paginaActual,2))
+        else dispatch(getCountries(filtro,valorFiltro,paginaActual,9))
+        
     }
     const lastPage=(filtro,valorFiltro,paginaActual)=>{
-        dispatch(getCountries(filtro,valorFiltro,paginaActual,10))
+        if(filtro==='all_activities') dispatch(getAllActivities(filtro,valorFiltro,paginaActual,2))
+        else dispatch(getCountries(filtro,valorFiltro,paginaActual,10))
        
     }
     
     return(
         <div className="container-pagination">
-        <ul className="pagination">
+        <div className="pagination">
             
-        <li  className="lista" onClick={()=>firstPage(filtro,valorFiltro,0)} > <p>{paginaActual===0?'':''}</p>  </li>
-        <li className="lista" onClick={()=>prevPage(filtro,valorFiltro,paginaActual)} >  {paginaActual-1<0?'':<p>{'<' }</p>}  </li>
+        {paginaActual===0?'': <p  className="lista-pg-extremos" onClick={()=>firstPage(filtro,valorFiltro,0)} > Inicio</p>}  
+          {paginaActual-1<0?'':<p className="lista-pg" onClick={()=>prevPage(filtro,valorFiltro,paginaActual)} >◀</p> }  
         
-        <li  className="lista"><p className="active">{paginaActual===0?'Inicio':paginaActual}</p></li>
-        <li className="lista" onClick={()=>next(filtro,valorFiltro,paginaActual)} >  {(paginaActual+1>=paginasTotales?'':<p>{'>'}</p>)}  </li>
+        <p   className="active"> {paginaActual===0?'Inicio':paginaActual}</p>
+        {(paginaActual+1>=paginasTotales?'':<p className="lista-pg" onClick={()=>next(filtro,valorFiltro,paginaActual)} > ▶  </p>)} 
         
-        <li className="lista" onClick={()=>lastPage(filtro,valorFiltro,paginasTotales)} >  <p>{paginaActual===paginasTotales?'':''}</p></li>
-        </ul>
+        {paginaActual===paginasTotales?'':<p className="lista-pg-extremos" onClick={()=>lastPage(filtro,valorFiltro,paginasTotales)} >FINAL</p>}
+        </div>
         </div>
 
        

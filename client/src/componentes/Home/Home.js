@@ -14,13 +14,14 @@ import SearchBar from "../SearchBar/SearchBar";
 
 
 
+
 export default function Home(){
     const dispatch=useDispatch()
     
 useEffect(()=>{
 
     dispatch(getCountries(0,9))
-    dispatch(getAllActivities())
+    dispatch(getAllActivities(0,30))
 
 
 },[dispatch])
@@ -34,9 +35,9 @@ useEffect(()=>{
             <SearchBar />
               
             </div>
+            <Paginacion />
             <div className="cards">
             <Countries />
-            <Paginacion />
            </div>
 
         </div>

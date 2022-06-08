@@ -8,6 +8,7 @@ export default function ActivitiyCard({id,tipo,name,difficulty,season,countries}
 return(
     
         <>
+        <div className='formycard'>
         <div className="contenedor-activity">
 <div className="titulo-actividad">{name}</div>
 <div className="card_detail-actv">
@@ -27,8 +28,9 @@ return(
 </div>
 
 </div>
-{mostrarForm?<><FormularioCountry id={id}/> </>:''}
+{mostrarForm?<div className='form-cerrar'><p className='cerrar' onClick={()=>setmostrarForm(false)}>⮾</p><FormularioCountry id={id}/> </div>:''}
 
+        </div>
 </>
     
 )

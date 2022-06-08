@@ -1,7 +1,7 @@
 .global-activity{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .formulario-actv{
     display: flex;
@@ -14,5 +14,11 @@
   display: flex;
   justify-content: space-around;
   align-content: space-around;
-  width: 50%;
+  width: 100%;
+  flex-direction: row;
+
+}
+.contenedor-pg{
+  display: flex;
+  flex-direction: column;
 }

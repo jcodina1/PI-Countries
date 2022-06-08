@@ -54,13 +54,13 @@ async function getAllCountries(req,res,next){
                 console.log('Obtenido de API');
             await Country.bulkCreate(dataCountriesArr)
             let pais= await Country.findAndCountAll({limit:limit,offset:offset})
-            datos=getPagingData(pais,page,limit)
-            res.send(datos)
+            datos=getPagingData(pais,page,limit,'all_countries',null)
+            res.status(200).send(datos)
         }else{
             console.log('Traido de la Db');
             let pais= await Country.findAndCountAll({limit:limit,offset:offset})
-            datos=getPagingData(pais,page,limit)
-            res.send(datos)
+            datos=getPagingData(pais,page,limit,'all_countries',null)
+            res.status(200).send(datos)
         
         }
     
@@ -76,7 +76,7 @@ async function getCountryById(req,res,next){
         where: {id:{[Op.iLike]:`%${idPais}`}},
         include: Activity
     })
-    res.send(pais)
+    res.status(200).send(pais)
     } catch (error) {
         next(error)
     }
@@ -91,9 +91,9 @@ async function getByName(req,res,next){
                 order:[['id','ASC']]
             })
             
-            if (!pais[0]) res.status(404).send(`El Pais ${name} No Se encuentra`)
-            else res.send(pais)
+            res.status(200).send(pais)
         }
+        res.status(404).send({Error:`El Pais ${name} No Se encuentra`})
     } catch (error) {
         next(error)
     }
@@ -112,8 +112,8 @@ async function getByContinent(req,res,next){
                 offset:offset
             })
             datos=getPagingData(continente,page,limit,'continent',continent)
-            res.send(datos)
-        }
+            res.status(200).send(datos)
+        }res.status(404).send({Error:`El Pais ${continent} No Se encuentra`})
      } catch (error) {
          next(error)
      }
@@ -132,7 +132,7 @@ async function orderAlpha(req,res,next){
                 offset:offset
             })
             datos=getPagingData(A_ZOrder,page,limit,'orderAlpha',orderAlpha)
-            res.send(datos)
+            res.status(200).send(datos)
             
         }else if (orderAlpha ==='ZA') {
             let Z_AOrder= await Country.findAndCountAll({ 
@@ -141,8 +141,8 @@ async function orderAlpha(req,res,next){
                 offset:offset
             })
             datos=getPagingData(Z_AOrder,page,limit,'orderAlpha',orderAlpha)
-            res.send(datos)
-        }
+            res.status(200).send(datos)
+        }else res.status(404).send({Error:`No se pudo ordenar recargue la pagina`})
      } catch (error) {
          next(error)
      }
@@ -162,7 +162,7 @@ async function orderbypopulation(req,res,next){
                 offset:offset
             })
             datos=getPagingData(pais,page,limit,'population',population)
-            res.send(datos)
+            res.status(200).send(datos)
         }else if(population==='menor'){
             const pais=await  Country.findAndCountAll({
                 
@@ -171,8 +171,8 @@ async function orderbypopulation(req,res,next){
                 offset:offset
             })
             datos=getPagingData(pais,page,limit,'population',population)
-            res.send(datos)
-        }     
+            res.status(200).send(datos)
+        }else res.status(404).send({Error:`No se pudo ordenar recargue la pagina`})     
 }catch (error) {
         next(error)
     }
@@ -188,7 +188,7 @@ module.exports={
     orderAlpha,
     orderbypopulation,
     getPagingData,
-    getPagination
+    
 
     
 }

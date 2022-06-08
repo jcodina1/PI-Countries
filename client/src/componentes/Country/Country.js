@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getCountryById } from "../../redux/Actions/actionsCountry";
-
+import imagen from '../../assets/VAyR.gif'
 
 import { Navbar } from "../Navbar/NavBar";
 import CountryCardId from "../Cards/CountryCard/Countryid";
@@ -37,7 +37,9 @@ export default function Country(){
             </>
         )
     }else{
-        return'vuelva a cargar la pagina'
+        return( <div className="load"><img src={imagen} alt='cargando' /></div>
+        
+        )
     }
     
 }

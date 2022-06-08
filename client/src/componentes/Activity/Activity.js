@@ -5,6 +5,8 @@ import ActivitiyCard from "../Cards/activityCard/activityCard";
 import './Activity.css'
 import { Navbar } from "../Navbar/NavBar";
 import Formulario from "./Formulario";
+import imagen from '../../assets/VAyR.gif'
+import { Paginacion } from "../Paginacion/paginacion";
 
 export default function Activity(){
     const dispatch= useDispatch()
@@ -13,21 +15,23 @@ export default function Activity(){
     useEffect(()=>{
     
         
-        dispatch(getAllActivities())
+        dispatch(getAllActivities(0,2))
         
         
     },[dispatch])
 
     
-    return(
+    if(actividades){
+        return(
        <>
             <Navbar/>
-        
             <div className="global-activity">
             
-             <div className="contenedor-activities">
+             <div className="contenedor-pg">
+            <Paginacion/>
                  
-            {actividades.length===0?<h1>'NO HAY ACTIVIDADES'</h1>:actividades.map(a=><ActivitiyCard
+           <div className="contenedor-activities">
+           {actividades.length===0?<h1>'NO HAY ACTIVIDADES'</h1>:actividades.map(a=><ActivitiyCard
                     key={a.id}
                     id={a.id}
                     tipo={a.tipo}
@@ -36,6 +40,7 @@ export default function Activity(){
                     season={a.season}
                     countries={a.countries}
                     />)}
+           </div>
             </div>
                     <div className='formulario-actv'>
                     <Formulario />
@@ -44,4 +49,11 @@ export default function Activity(){
                 </div>            
         </>
     )
+}else{
+    return(
+        <div className="load">
+        <img src={imagen} alt='cargando'/>
+            </div>
+        )
+    }
 }

@@ -29,4 +29,34 @@
   background-color: #cccccc;
   color: black;
 }
+.mensaje{
+  font-size:28px;
+  font-family:helvetica;
+  font-weight:bold;
+  color:#ffffff;
+  text-align: center;
+  background-color: red;
+  text-transform:uppercase;
+  animation-name: parpadeo;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
+
+@keyframes parpadeo {  
+  0% { opacity: 1.0; }
+   50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+ 
+  
+}
+
+
+
+
+@keyframes parpadeo {  
+0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+100% { opacity: 1.0; }
+}

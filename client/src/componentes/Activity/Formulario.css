@@ -24,6 +24,12 @@
   margin: -0.512em auto;
   width: 80px;
 }
+.input-text{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .input-right {
 	float: right;
 	width: 45%;
@@ -47,8 +53,9 @@
 	padding: 0 0 0.875em 0;
 }
 .input-left {
-	float: left;
-	width: 45%;
+  float: left;
+  width: 45%;
+  
 }
 .temporada {
   width: 100%;
@@ -82,4 +89,13 @@
   border-radius: 5px; 
   font-weight: bold;
 }
+.selectylist{
 
+}
+
+
+.lista{
+  width: 100%;
+  float: left;
+  margin: 10px;
+}
