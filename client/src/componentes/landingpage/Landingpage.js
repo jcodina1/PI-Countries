@@ -14,8 +14,8 @@ function Landingpage() {
     
   useEffect(()=>{
   
-      dispatch(getCountries(0,9))
       dispatch(getAllActivities(0,30))
+      dispatch(getCountries(0,9))
   
   
   },[dispatch])

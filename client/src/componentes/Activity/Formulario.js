@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllActivities, postActivities } from '../../redux/Actions/actionsActivity';
-import { getCountries } from '../../redux/Actions/actionsCountry';
+import { getAllActivities, getCountryByContinent, postActivities } from '../../redux/Actions/actionsActivity';
+//import { getCountries } from '../../redux/Actions/actionsCountry';
 import './Formulario.css'
 
 export default function Formulario(props){
@@ -15,12 +15,13 @@ export default function Formulario(props){
       duracion:'',
       temporada:'',
       
+      
     })
 const temporadas=['Verano', 'Otoño', 'Invierno', 'Primavera']
 const [countries,setCountries]=useState([])
 const continentes=['africa','europe','south America','north America','asia','Antarctica']
 const handeChangeContinent=(e)=>{
-  dispatch(getCountries('continent',e.target.value,0,250))
+  dispatch(getCountryByContinent(e.target.value,0,250))
 }
 const eliminarC=(pais)=>{
   countries.splice(countries.indexOf(pais),1)
@@ -47,12 +48,13 @@ const handeChangeCountries=(e)=>{
         
     }
     const handleOnSubmit=(e)=>{
-        e.preventDefault() 
-        dispatch(postActivities(input.tipo,input.name,input.dificultad,input.duracion,input.temporada,countries))
-        dispatch(getAllActivities(0,2))
+      e.preventDefault() 
+      dispatch(postActivities(input.tipo,input.name,input.dificultad,input.duracion,input.temporada,countries))
+      dispatch(getAllActivities(0,2))
+        window.location.reload()
     }
 
-console.log(countries);
+
     return(
     
       <div className="container-form">
@@ -125,9 +127,9 @@ console.log(countries);
                 className='input-form'
                 name='temporada' 
                 onChange={(e)=>handleInputChange(e)}
-                defaultValue=''
+                value={input.temporada}
                 >
-                <option value='' >Select an option</option>
+                <option value={1}  >Select an option</option>
                {temporadas.map(e=> <option key={e} value={e}>{e}</option>)}
                 </select>
           
@@ -140,9 +142,9 @@ console.log(countries);
                 className='input-form'
                 name='continente ' 
                 onChange={(e)=>handeChangeContinent(e)}
-                defaultValue=''
+                
                 >
-                <option value='' >Selecciona un continente</option>
+                <option value={1} >Selecciona un continente</option>
                 {continentes.map(e=><option key={e} value={e}>{e}</option>)}
                 
                 
@@ -153,24 +155,24 @@ console.log(countries);
                 className='input-form'
                 name='countries' 
                 onChange={(e)=>handeChangeCountries(e)}
-                defaultValue=''
+                defaultValue={1}
                 >
-                <option value='' >Seleccione un pais</option>
+                <option value={1} >Seleccione un pais</option>
                     {pais.map(e => <option key={e.id} value={e.id}  >{e.name}</option>)}
                 </select></div>
  </div>
-                <div className='lista'>{countries.map(c=><li className='' key={c}>{c}<p className='' onClick={()=>eliminarC(c)}>⮾</p></li>)}</div></>
+              <div className='lista'>{countries.map(c=><div  key={c} className='item'><p className='' onClick={()=>eliminarC(c)}>⮾</p><li className='' >{c}</li></div>)}</div></>
                 :<div className='selctectylist'>
                   <select
                 className='input-form'
                 name='countries' 
                 onChange={(e)=>handeChangeCountries(e)}
-                defaultValue=''
+               value={countries}
                 >
-                <option value='' >Select an option</option>
-                <option  value={props.id}>{props.pais}</option>
+                <option value={1} >Select an option</option>
+                <option key={props.id}  value={props.id}>{props.pais}</option>
                 </select>
-                <div className='lista'>{countries.map(c=><li className='' key={c}>{c}<p className='cerrar' onClick={()=>eliminarC(c)}>⮾</p></li>)}</div>
+                <div className='lista'>{countries.map(c=><div className='item' key={c}><p className='' onClick={()=>eliminarC(c)}>⮾</p><li className='' >{c}</li></div>)}</div>
                 </div>}
                 
           
@@ -185,6 +187,7 @@ console.log(countries);
     )}
     export function validate(input) {
       let errors = {};
+      
       if (!input.tipo) {
         errors.tipo = 'Falta el tipo de actividad';
       }
@@ -204,10 +207,10 @@ console.log(countries);
       if (!input.temporada) {
         errors.temporada = 'Elegir la temporda ';
       }
-      if (input.countries.length===0) {
+      if (!input.countries) {
         errors.countries = 'Elegir el pais ';
       } 
-     
+   
     
       return errors;
     };

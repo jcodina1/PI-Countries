@@ -1,11 +1,13 @@
 import axios from 'axios'
+
 export const GET_ALL_ACTIVITIES='GET_ALL_ACTIVITIES'
 export const POST_ACTIVITY='POST_ALL_ACTIVITIES'
 export const GET_ACTIVITY_BY_TIPO='GET_ACTIVITY_BY_TIPO'
 export const POST_COUNTRY_ACTIVITY='POST_COUNTRY_ACTIVITY'
+export const GET_ALL_COUNTRIES_BY_CONTINENT_FORM='GET_ALL_COUNTRIES_BY_CONTINENT_FORM'
 
 
-export const getAllActivities=(page,size)=>{
+export const getAllActivities=(page=0,size)=>{
     return async function (dispatch){
         return axios.get(`http://localhost:3001/activity?page=${page}&size=${size}`)
         .then(data=>{
@@ -53,6 +55,16 @@ export const postCountryActivity=(countryId,activityId)=>{
             dispatch({type: POST_COUNTRY_ACTIVITY,
             payload:data.data
             })
+        })
+    }
+}
+
+export const getCountryByContinent=(valor,page=0,size=250)=>{
+    return async function(dispatch){
+        return axios.get(`http://localhost:3001/country/continent?continent=${valor}&page=${page}&size=${size}`)
+        .then(data=>{
+            dispatch({type: GET_ALL_COUNTRIES_BY_CONTINENT_FORM,
+            payload:data.data})
         })
     }
 }

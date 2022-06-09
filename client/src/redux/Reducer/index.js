@@ -1,4 +1,4 @@
-import { GET_ALL_ACTIVITIES, POST_ACTIVITY, GET_ACTIVITY_BY_TIPO, POST_COUNTRY_ACTIVITY } from "../Actions/actionsActivity";
+import { GET_ALL_ACTIVITIES, POST_ACTIVITY, GET_ACTIVITY_BY_TIPO, POST_COUNTRY_ACTIVITY, GET_ALL_COUNTRIES_BY_CONTINENT_FORM } from "../Actions/actionsActivity";
 import {  GET_ALL_COUNTRIES,
      GET_ALL_COUNTRIES_BY_CONTINENT,
       GET_COUNTRY_BY_ID,
@@ -50,7 +50,7 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             countries:action.payload.Countries,
             paginasTotales:Math.ceil(action.payload.totalItems/10)-1,
-            paginaActual:state.currentPage,
+            paginaActual:action.payload.currentPage,
             filtro:action.payload.filtro,
             valorFiltro: action.payload.valor
         }
@@ -77,7 +77,7 @@ const rootReducer = (state = initialState, action) => {
             return{
             ...state,
             activities:action.payload.Actividades,
-            paginasTotales:Math.ceil(action.payload.totalItems/2)-1,
+            paginasTotales:Math.ceil(action.payload.totalItems/2)-2,
             paginaActual:action.payload.currentPage,
             filtro:action.payload.filtro,
             valorFiltro: action.payload.valor
@@ -103,6 +103,11 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             activity:{},  
         }
+        case GET_ALL_COUNTRIES_BY_CONTINENT_FORM:
+            return{
+                ...state,
+                countries:action.payload.Countries
+            }
     default: return {...state}
 
 };

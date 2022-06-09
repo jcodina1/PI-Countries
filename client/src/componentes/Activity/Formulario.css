@@ -8,7 +8,7 @@
 
 .form {
   padding: 37.5px;
-  margin: 50px 0;
+  margin: 0px 0;
 }
 
 .titulo {
@@ -21,7 +21,7 @@
 }
 .underline {
   border-bottom: solid 2px #474544;
-  margin: -0.512em auto;
+  margin: 30px auto;
   width: 80px;
 }
 .input-text{
@@ -89,13 +89,22 @@
   border-radius: 5px; 
   font-weight: bold;
 }
-.selectylist{
 
-}
 
 
 .lista{
   width: 100%;
   float: left;
   margin: 10px;
+  list-style: none;
+}
+.item{
+  display: flex;
+  align-items: center;
+  margin: 3px;
+
+}
+.item p{
+  color:red
+
 }

@@ -17,18 +17,18 @@ export const Paginacion =()=>{
         
     }
     const prevPage=(filtro,valorFiltro,paginaActual)=>{
-        if(filtro==='all_activities') dispatch(getAllActivities(filtro,valorFiltro,paginaActual-1,2))
+        if(filtro==='all_activities') dispatch(getAllActivities(paginaActual-1,2))
         else dispatch(getCountries(filtro,valorFiltro,paginaActual-1,10))
          
         
     }
     const firstPage=(filtro,valorFiltro,paginaActual)=>{
-        if(filtro==='all_activities') dispatch(getAllActivities(filtro,valorFiltro,paginaActual,2))
+        if(filtro==='all_activities') dispatch(getAllActivities(paginaActual,2))
         else dispatch(getCountries(filtro,valorFiltro,paginaActual,9))
         
     }
     const lastPage=(filtro,valorFiltro,paginaActual)=>{
-        if(filtro==='all_activities') dispatch(getAllActivities(filtro,valorFiltro,paginaActual,2))
+        if(filtro==='all_activities') dispatch(getAllActivities(paginaActual,2))
         else dispatch(getCountries(filtro,valorFiltro,paginaActual,10))
        
     }
@@ -38,7 +38,7 @@ export const Paginacion =()=>{
         <div className="pagination">
             
         {paginaActual===0?'': <p  className="lista-pg-extremos" onClick={()=>firstPage(filtro,valorFiltro,0)} > Inicio</p>}  
-          {paginaActual-1<0?'':<p className="lista-pg" onClick={()=>prevPage(filtro,valorFiltro,paginaActual)} >◀</p> }  
+          {paginasTotales<3?'':paginaActual-1<0?'':<p className="lista-pg" onClick={()=>prevPage(filtro,valorFiltro,paginaActual)} >◀</p> }  
         
         <p   className="active"> {paginaActual===0?'Inicio':paginaActual}</p>
         {(paginaActual+1>=paginasTotales?'':<p className="lista-pg" onClick={()=>next(filtro,valorFiltro,paginaActual)} > ▶  </p>)} 

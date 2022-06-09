@@ -92,8 +92,7 @@ async function getByName(req,res,next){
             })
             
             res.status(200).send(pais)
-        }
-        res.status(404).send({Error:`El Pais ${name} No Se encuentra`})
+        }else res.status(404).send({Error:`El Pais ${name} No Se encuentra`})
     } catch (error) {
         next(error)
     }
@@ -113,7 +112,7 @@ async function getByContinent(req,res,next){
             })
             datos=getPagingData(continente,page,limit,'continent',continent)
             res.status(200).send(datos)
-        }res.status(404).send({Error:`El Pais ${continent} No Se encuentra`})
+        }else res.status(404).send({Error:`El Pais ${continent} No Se encuentra`})
      } catch (error) {
          next(error)
      }

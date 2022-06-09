@@ -38,6 +38,7 @@
     padding: 0.2rem 0.5rem;
     width: 36px;   
     margin: 10px;   
+    cursor: pointer;  
     
   }
   .lista-pg-extremos  {
@@ -51,7 +52,8 @@
     text-align: center;
     padding: 0.2rem 0.5rem;
     width: 60px;  
-    margin: 10px;   
+    margin: 10px; 
+    cursor: pointer;  
     
   }
  
