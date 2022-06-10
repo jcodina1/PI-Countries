@@ -49,7 +49,7 @@ export default function FormularioCountry({id}){
                 <option value='' >Select an option</option>
                     {pais.map(e => <option key={e.id} value={e.id}  >{e.name}</option>)}
                 </select>
-                <div className='lista'>{countries.map(c=><div className='item'><p className='' onClick={()=>eliminarC(c)}>⮾</p><li className='' key={c}>{c}</li></div>)}</div>
+                <div className='lista'>{countries.map(c=><div key={c} className='item'><p className='' onClick={()=>eliminarC(c)}>⮾</p><li className='' >{c}</li></div>)}</div>
                 <input className="form_button" name="submit" type="submit" value="Enviar" />
 </form></>
     )

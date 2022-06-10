@@ -6,7 +6,9 @@ import './index.css';
 import AppRouter from './routes/AppRoutes.js';
 import reportWebVitals from './reportWebVitals';
 import store from './redux/Store/index.js'
-
+import axios from 'axios';
+dotenv.config()
+axios.defaults.baseURL= process.env.REAC_APP_API||""
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

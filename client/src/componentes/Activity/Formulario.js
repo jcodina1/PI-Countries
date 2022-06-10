@@ -167,7 +167,7 @@ const handeChangeCountries=(e)=>{
                 className='input-form'
                 name='countries' 
                 onChange={(e)=>handeChangeCountries(e)}
-               value={countries}
+               value={countries[0]}
                 >
                 <option value={1} >Select an option</option>
                 <option key={props.id}  value={props.id}>{props.pais}</option>
