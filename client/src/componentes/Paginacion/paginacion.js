@@ -42,7 +42,7 @@ export const Paginacion =()=>{
           {paginasTotales<=2?'':paginaActual-1<0?'':<p className="lista-pg" onClick={()=>prevPage(filtro,valorFiltro,paginaActual)} >◀</p> }  
         
         <p   className="active"> {paginaActual===0?'Inicio':paginaActual}</p>
-        {(paginasTotales<paginaActual+1||activities.length===0?'':<p className="lista-pg" onClick={()=>next(filtro,valorFiltro,paginaActual)} > ▶  </p>)} 
+        {(paginasTotales<paginaActual+1?'':<p className="lista-pg" onClick={()=>next(filtro,valorFiltro,paginaActual)} > ▶  </p>)} 
         
         {paginaActual===paginasTotales?'':<p className="lista-pg-extremos" onClick={()=>lastPage(filtro,valorFiltro,paginasTotales)} >FINAL</p>}
         </div>
