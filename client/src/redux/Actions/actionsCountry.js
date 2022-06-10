@@ -13,19 +13,19 @@ export const getCountries=(filtro,valor,page=0,size=9)=>{
     
 
     return async function(dispatch){
-        page<0?page=0:filtro==='continent'?axios.get(`http://localhost:3001/country/continent?continent=${valor}&page=${page}&size=${size}`)
+        page<0?page=0:filtro==='continent'?axios.get(`/country/continent?continent=${valor}&page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: GET_ALL_COUNTRIES_BY_CONTINENT,
             payload:data.data})
-        }):filtro==='orderAlpha'?axios.get(`http://localhost:3001/country/orderAlpha?orderAlpha=${valor}&page=${page}&size=${size}`)
+        }):filtro==='orderAlpha'?axios.get(`/country/orderAlpha?orderAlpha=${valor}&page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: ORDER_ALPHA,
             payload:data.data})
-        }):filtro==='population'?axios.get(`http://localhost:3001/country/population?population=${valor}&page=${page}&size=${size}`)
+        }):filtro==='population'?axios.get(`/country/population?population=${valor}&page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: ORDER_BY_POPULATION,
             payload:data.data})
-        }):axios.get(`http://localhost:3001/country?&page=${page}&size=${size}`)
+        }):axios.get(`/country?&page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: GET_ALL_COUNTRIES,
             payload:data.data})
@@ -36,7 +36,7 @@ export const getCountries=(filtro,valor,page=0,size=9)=>{
 
 export const getCountryById=(idPais)=>{
     return async function (dispatch){
-        return axios.get(`http://localhost:3001/country/${idPais}`)
+        return axios.get(`/country/${idPais}`)
         .then(data=>{
             dispatch({type: GET_COUNTRY_BY_ID,
             payload:data.data})
@@ -45,7 +45,7 @@ export const getCountryById=(idPais)=>{
 }
 export const getCountryByName=(name)=>{
     return async function (dispatch){
-        return axios.get(`http://localhost:3001/country/name/${name}`)
+        return axios.get(`/country/name/${name}`)
         .then(data=>{
             dispatch({type: GET_COUNTRY_BY_NAME,
             payload:data.data})

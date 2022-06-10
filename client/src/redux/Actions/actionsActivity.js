@@ -9,7 +9,7 @@ export const GET_ALL_COUNTRIES_BY_CONTINENT_FORM='GET_ALL_COUNTRIES_BY_CONTINENT
 
 export const getAllActivities=(page=0,size)=>{
     return async function (dispatch){
-        return axios.get(`http://localhost:3001/activity?page=${page}&size=${size}`)
+        return axios.get(`/activity?page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: GET_ALL_ACTIVITIES,
             payload:data.data
@@ -20,7 +20,7 @@ export const getAllActivities=(page=0,size)=>{
 
 export const postActivities=(tipo,name,difficulty,duration,season,countryId)=>{
     return async function (dispatch){
-        return axios.post(`http://localhost:3001/activity`,{
+        return axios.post(`/activity`,{
             tipo:tipo,
             name:name,
             difficulty:difficulty,
@@ -37,7 +37,7 @@ export const postActivities=(tipo,name,difficulty,duration,season,countryId)=>{
 }
 export const getActivityByTipo=(valor,page,size)=>{
     return async function (dispatch){
-        return axios.get(`http://localhost:3001/activity/${valor}?&page=${page}&size=${size}`)
+        return axios.get(`/activity/${valor}?&page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: GET_ACTIVITY_BY_TIPO,
             payload:data.data})
@@ -47,7 +47,7 @@ export const getActivityByTipo=(valor,page,size)=>{
 
 export const postCountryActivity=(countryId,activityId)=>{
     return async function (dispatch){
-        return axios.post('http://localhost:3001/activity/AC',{
+        return axios.post('/activity/AC',{
           countryId:countryId,
           activityId:activityId
             })
@@ -61,7 +61,7 @@ export const postCountryActivity=(countryId,activityId)=>{
 
 export const getCountryByContinent=(valor,page=0,size=250)=>{
     return async function(dispatch){
-        return axios.get(`http://localhost:3001/country/continent?continent=${valor}&page=${page}&size=${size}`)
+        return axios.get(`/country/continent?continent=${valor}&page=${page}&size=${size}`)
         .then(data=>{
             dispatch({type: GET_ALL_COUNTRIES_BY_CONTINENT_FORM,
             payload:data.data})
