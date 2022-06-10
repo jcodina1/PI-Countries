@@ -20,6 +20,7 @@ export default function Formulario(props){
 const temporadas=['Verano', 'Otoño', 'Invierno', 'Primavera']
 const [countries,setCountries]=useState([])
 const continentes=['africa','europe','south America','north America','asia','Antarctica']
+const type=['Rural', 'Gastronimico','Cultural','Musical', 'Deportivo','Maritimo','Extremo','Negocios','Urbano','Educativo','Social','Religioso','Lujo']
 const handeChangeContinent=(e)=>{
   dispatch(getCountryByContinent(e.target.value,0,250))
 }
@@ -68,14 +69,16 @@ const handeChangeCountries=(e)=>{
           <div className="input-left">
           {errors && errors.tipo ? (<p className="danger"> {errors.tipo}</p>):''}
       
-          <input
-          className='input-form'
-          type='text'
-          name="tipo"
-          placeholder="Tipo de actividad"
-          value={input.tipo}
-          onChange={(e)=>handleInputChange(e)}
-          /> 
+          
+           <select
+                className='input-form'
+                name="tipo" 
+                onChange={(e)=>handleInputChange(e)}
+                defaultValue={1}
+                >
+                <option value={1} >Seleccione un pais</option>
+                    {type.map(e => <option key={e.id} value={e.id}  >{e.name}</option>)}
+                </select>
           {/* DIFICULTAD */}  
           {errors && errors.dificultad ? (<p className="danger"> {errors.dificultad}</p>):''}
           <input
