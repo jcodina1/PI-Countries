@@ -44,7 +44,7 @@ export const Paginacion =()=>{
         <p   className="active"> {paginaActual===0?'Inicio':paginaActual}</p>
         {(paginasTotales<paginaActual+1||activities.length===0?'':<p className="lista-pg" onClick={()=>next(filtro,valorFiltro,paginaActual)} > ▶  </p>)} 
         
-        {paginaActual===paginasTotales?'':<p className="lista-pg-extremos" onClick={()=>lastPage(filtro,valorFiltro,activities.id/2)} >FINAL</p>}
+        {paginaActual===paginasTotales?'':<p className="lista-pg-extremos" onClick={()=>lastPage(filtro,valorFiltro,paginasTotales)} >FINAL</p>}
         </div>
         </div>
 
