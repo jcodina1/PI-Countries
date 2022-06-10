@@ -51,7 +51,7 @@ const handeChangeCountries=(e)=>{
       e.preventDefault() 
       dispatch(postActivities(input.tipo,input.name,input.dificultad,input.duracion,input.temporada,countries))
       dispatch(getAllActivities(0,2))
-        window.location.reload()
+      // //window.location.reload()
     }
 
 

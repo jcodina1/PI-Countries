@@ -77,7 +77,7 @@ const rootReducer = (state = initialState, action) => {
             return{
             ...state,
             activities:action.payload.Actividades,
-            paginasTotales:Math.ceil(action.payload.totalItems/2)-2,
+            paginasTotales:Math.ceil(action.payload.totalPages)-1,
             paginaActual:action.payload.currentPage,
             filtro:action.payload.filtro,
             valorFiltro: action.payload.valor

@@ -15,7 +15,7 @@ export default function FormularioCountry({id}){
         setCountries([...countries,e.target.value])
       }
       const handleOnSubmit=(e)=>{
-        
+        e.preventDefault()
         dispatch(postCountryActivity(countries,id))
         dispatch(getAllActivities(0,2))
         window.location.reload()

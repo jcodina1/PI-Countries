@@ -15,7 +15,7 @@ const getPagingDataAc = (data, page, limit,filtro) => {
     const { count: totalItems, rows: Actividades } = data;
     const currentPage = page ? +page : 0;
     const totalPages = Math.ceil(totalItems / limit); 
-    page>totalPages?page=totalPages:totalPages   
+    page>totalPages?page=totalPages:totalPages
     return { totalItems, Actividades, totalPages, currentPage, filtro};
   };
 async function getActivity(req,res,next){
@@ -25,7 +25,8 @@ async function getActivity(req,res,next){
         const ver =await Activity.findAndCountAll({
             order:[['id','DESC']],
             limit:limit,offset:offset,
-            include:Country           
+            include:Country ,
+            distinct: true          
         })
         
         datos=getPagingDataAc(ver,page,limit,'all_activities',null)
@@ -87,7 +88,7 @@ async function getActivityByTipo(req,res,next){
 async function postCountryActivity(req,res,next){
     const{countryId,activityId}=req.body
     try {
-        let pais=await Country.findAll({where:{id:{[Op.iLike]:`%${countryId}%`}}})
+        let pais=await Country.findAll({where:{id:countryId}})
         const actividad= await Activity.findByPk(activityId)
         const resultado=await actividad.addCountry(pais)
         res.status(200).send('se añadio el pais')
