@@ -29,11 +29,16 @@ const eliminarC=(pais)=>{
   setCountries([...countries])
 }
 const handeChangeCountries=(e)=>{
-  setCountries([...countries,e.target.value])
-  setErrors(validate({
-    ...countries,...input,
-    [e.target.name]: e.target.value
-  }));
+  if(countries.includes(e.target.value)){
+ setCountries([...countries])
+  }else{
+    setCountries([...countries,e.target.value])
+    setErrors(validate({
+      ...countries,...input,
+      [e.target.name]: e.target.value
+    }));
+  }
+ 
 }
   const handleInputChange=(e)=>{
     
@@ -164,7 +169,7 @@ const handeChangeCountries=(e)=>{
                     {pais.map(e => <option key={e.id} value={e.id}  >{e.name}</option>)}
                 </select></div>
  </div>
-              <div className='lista'>{countries.map(c=><div  key={c} className='item'><p className='' onClick={()=>eliminarC(c)}>⮾</p><li className='' >{c}</li></div>)}</div></>
+              <div className='lista'>{countries.map(c=><div  key={c} className='item'><p className='' onClick={()=>eliminarC(c)}>⮾</p><li className='' >{c}</li><p>{}</p></div>)}</div></>
                 :<div className='selctectylist'>
                   <select
                 className='input-form'

@@ -87,12 +87,12 @@ async function getByName(req,res,next){
     try {
         if(name){
             const pais= await Country.findAll({
-                where:{name:{[Op.iLike]:`%${name}%`}},
+                where:{name:{[Op.iLike]:`%${name}`}},
                 order:[['id','ASC']]
             })
             
             res.status(200).send(pais)
-        }else res.status(404).send({Error:`El Pais ${name} No Se encuentra`})
+        }else res.status(404).send({Msg:`El Pais ${name} No Se encuentra`})
     } catch (error) {
         next(error)
     }
