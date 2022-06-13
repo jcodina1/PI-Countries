@@ -39,6 +39,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+   
+}
+.formycard-edit{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  animation: swing ;
+  animation-duration: 2s;
 }
 .cerrar{
   font-size: 30px;

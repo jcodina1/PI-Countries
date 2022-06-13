@@ -37,7 +37,7 @@ const handleInputChange=(e)=>{
 if(editar){
         return(
                 <>
-                <div className='formycard'>
+                <div className='formycard-edit'>
                 <div className="contenedor-activity">
           
         <div className="card_detail-actv">

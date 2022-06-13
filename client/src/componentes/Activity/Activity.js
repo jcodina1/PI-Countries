@@ -7,6 +7,7 @@ import { Navbar } from "../Navbar/NavBar";
 import Formulario from "./Formulario";
 import imagen from '../../assets/VAyR.gif'
 import { Paginacion } from "../Paginacion/paginacion";
+import 'animate.css';
 
 export default function Activity(){
     const dispatch= useDispatch()
