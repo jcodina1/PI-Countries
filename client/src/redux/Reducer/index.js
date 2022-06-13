@@ -1,4 +1,4 @@
-import { GET_ALL_ACTIVITIES, POST_ACTIVITY, GET_ACTIVITY_BY_TIPO, POST_COUNTRY_ACTIVITY, GET_ALL_COUNTRIES_BY_CONTINENT_FORM } from "../Actions/actionsActivity";
+import { GET_ALL_ACTIVITIES, POST_ACTIVITY, GET_ACTIVITY_BY_TIPO, POST_COUNTRY_ACTIVITY, GET_ALL_COUNTRIES_BY_CONTINENT_FORM, DELETE_COUNTRY_ACTIVITY, PUT_ACTIVITY } from "../Actions/actionsActivity";
 import {  GET_ALL_COUNTRIES,
      GET_ALL_COUNTRIES_BY_CONTINENT,
       GET_COUNTRY_BY_ID,
@@ -107,6 +107,16 @@ const rootReducer = (state = initialState, action) => {
             return{
                 ...state,
                 countries:action.payload.Countries
+            }
+        case DELETE_COUNTRY_ACTIVITY:
+            return{
+                ...state,
+                mensaje:state.mensaje
+            }
+        case PUT_ACTIVITY:
+            return{
+                ...state,
+                mensaje:state.mensaje
             }
     default: return {...state}
 

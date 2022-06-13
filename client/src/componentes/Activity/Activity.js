@@ -39,6 +39,7 @@ export default function Activity(){
                     difficulty={a.difficulty}
                     season={a.season}
                     countries={a.countries}
+                    duration={a.duration}
                     />)}
            </div>
             </div>

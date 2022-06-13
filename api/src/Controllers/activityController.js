@@ -96,10 +96,53 @@ async function postCountryActivity(req,res,next){
         next(error)
     }
 }
+async function deleteCountryActivity(req,res,next){
+    const{countryId,activityId}=req.body
+    try {
+        let pais=await Country.findAll({where:{id:countryId}})
+        const actividad= await Activity.findByPk(activityId)
+        const resultado=await actividad.removeCountry(pais)
+        res.send('Elimino el pais')
+    } catch (error) {
+        next(error)
+    }
+}
 
+async function updateActivity(req,res,next){
+    const {activityId}=req.params
+    const {tipo,name,difficulty,duration,season}= req.body
+try {
+    actividad=await Activity.findByPk(activityId)
+        actividad.tipo=tipo
+        actividad.name=name
+        actividad.difficulty=difficulty
+        actividad.duration=duration
+        actividad.season=season
+        await actividad.save()
+    res.send('update')
+} catch (error) {
+    next(error)
+}
+}
+async function deleteActivity(req,res,next){
+try {
+    const {activityId}=req.params
+const borrar = await  Activity.destroy({
+    where:{
+        id:activityId
+    }
+})
+res.send({Msg:`La actividad ${activityId} se elimino`})
+} catch (error) {
+    next(error)
+}
+}
 module.exports={
     getActivity,
     postActivity,
     getActivityByTipo,
-    postCountryActivity
+    postCountryActivity,
+    deleteCountryActivity,
+    deleteActivity,
+    updateActivity
 }

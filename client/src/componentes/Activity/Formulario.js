@@ -115,7 +115,7 @@ const handeChangeCountries=(e)=>{
           {errors && errors.duracion ? (<p className="danger"> {errors.duracion}</p>):''}
           <input
           className='input-form'
-          type='text'          
+          type='number'          
           name="duracion"
           placeholder="Duracion"
           value={input.duracion}
@@ -208,9 +208,7 @@ const handeChangeCountries=(e)=>{
           errors.dificultad='La dificultad debe estar en un rago de 1-5'
         }
       if (!input.duracion ) {
-        errors.duracion = 'Recuerda escribir la duracion ';
-      }else if(!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(input.duracion)){
-        errors.duracion='La duracion debe escribirse con el formato HH:MM ejemplo'
+        errors.duracion = 'Recuerda escribir la duracion en minutos';
       }
       if (!input.temporada) {
         errors.temporada = 'Elegir la temporda ';

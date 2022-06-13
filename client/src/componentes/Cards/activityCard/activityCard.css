@@ -42,6 +42,7 @@
 }
 .cerrar{
   font-size: 30px;
+  cursor: pointer;
 }
 .form-cerrar{
   background-color: #ffffff71;
@@ -50,4 +51,49 @@
   padding: 8px;
   margin: 10px;
   
+}
+.edit{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.p-editar{
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.input-form-edit {
+	background: none;
+  border: none;
+	border-bottom: solid 2px #474544;
+	color: #474544;
+	font-size: 1.000em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	margin-top:5px ;
+	padding: 0 0 0.875em 0;
+ width: 100%;	
+}
+.input-form:focus {
+	outline: none;
+	padding: 0 0 0.875em 0;
+}
+.update-cancel{
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+
+}
+.update{
+  text-decoration: none;
+    font-weight: 600;
+    color: #023f00;   
+    cursor: pointer;
+}
+.cancel-edit{
+  text-decoration: none;
+  font-weight: 600;
+  color: #3f0000;
+  cursor: pointer;
 }

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 export const Navbar = () => {
     const mensaje= useSelector(state=>state.mensaje)
     const estado= useSelector(state=>state.countries)
-    console.log(estado);
+    
 
 
     return (
@@ -21,8 +21,8 @@ export const Navbar = () => {
                              
                                 
              </div>
-             {mensaje?<h1 className='mensaje'>{mensaje.Msg}</h1>:''}
-             {estado.length===0?<h1 className='mensaje'>El pais no se encuentra</h1>:''}
+             {/* {Object.keys(mensaje).length<0?<h1 className='mensaje'>{mensaje.Msg}</h1>:''}
+             {estado.length===0?<h1 className='mensaje'>El pais no se encuentra</h1>:''} */}
         </>
     )
 }
